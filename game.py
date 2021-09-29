@@ -38,13 +38,14 @@ def game():
                 org_table[2][2]='X'
             elif user_input==9 and org_table[2][4]!='O':
                 org_table[2][4]='X'
+            winner()
             table()
             # winner()
             # if winner() == 3:
             #     print('Game Over')
             #     return print('X Wins')
     except ValueError:
-        print('Try Again')
+        print('''Try Again, this time try in the Range 1-9''')
         user_input=int(input())
         if user_input == 1 and org_table[0][0] != 'O':
             org_table[0][0] = 'X'
@@ -64,6 +65,7 @@ def game():
             org_table[2][2] = 'X'
         elif user_input == 9 and org_table[2][4] != 'O':
             org_table[2][4] = 'X'
+        winner()
         table()
     #userY
     try:
@@ -90,13 +92,14 @@ def game():
                 org_table[2][2]='O'
             elif user_input==9 and org_table[2][4]!='X':
                 org_table[2][4]='O'
+            winner()
             table()
             # winner()
             # if winner() == 3:
             #     print('Game Over')
             #     return print('O Wins')
     except ValueError:
-        print('Try Again')
+        print('''Try Again, this time try in the Range 1-9''')
         user_input=int(input())
         if user_input == 1 and org_table[0][0] != 'X':
             org_table[0][0] = 'O'
@@ -116,6 +119,29 @@ def game():
             org_table[2][2] = 'O'
         elif user_input == 9 and org_table[2][4] != 'X':
             org_table[2][4] = 'O'
+        winner()
         table()
-while True:
-    game()
+def winner():
+    #coloumn_checker
+    for count in org_table:
+        X=0
+        O=0
+        for i in count:
+            if i=='X':
+                X+=1
+            elif i=='O':
+                O+=1
+        if X==3 and O==3:
+            print('''It is a draw.Game Over''')
+            break
+        elif X==3:
+            print('''X wins.Game Over''')
+            break
+        elif O==3:
+            print('''O wins.Game Over''')
+            break
+        X=0
+        O=0
+    #Row_Checker
+    # for count in org_table:
+    #     if count[]
