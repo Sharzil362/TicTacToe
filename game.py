@@ -38,12 +38,8 @@ def game():
                 org_table[2][2]='X'
             elif user_input==9 and org_table[2][4]!='O':
                 org_table[2][4]='X'
-            winner()
+            print(winner())
             table()
-            # winner()
-            # if winner() == 3:
-            #     print('Game Over')
-            #     return print('X Wins')
     except ValueError:
         print('''Try Again, this time try in the Range 1-9''')
         user_input=int(input())
@@ -65,7 +61,7 @@ def game():
             org_table[2][2] = 'X'
         elif user_input == 9 and org_table[2][4] != 'O':
             org_table[2][4] = 'X'
-        winner()
+        print(winner())
         table()
     #userY
     try:
@@ -92,12 +88,8 @@ def game():
                 org_table[2][2]='O'
             elif user_input==9 and org_table[2][4]!='X':
                 org_table[2][4]='O'
-            winner()
+            print(winner())
             table()
-            # winner()
-            # if winner() == 3:
-            #     print('Game Over')
-            #     return print('O Wins')
     except ValueError:
         print('''Try Again, this time try in the Range 1-9''')
         user_input=int(input())
@@ -119,7 +111,7 @@ def game():
             org_table[2][2] = 'O'
         elif user_input == 9 and org_table[2][4] != 'X':
             org_table[2][4] = 'O'
-        winner()
+        print(winner())
         table()
 def winner():
     #coloumn_checker
@@ -132,16 +124,100 @@ def winner():
             elif i=='O':
                 O+=1
         if X==3 and O==3:
-            print('''It is a draw.Game Over''')
-            break
+            print('''It is a draw.''')
+            return 'Game Over'
         elif X==3:
-            print('''X wins.Game Over''')
-            break
+            print('''X wins.''')
+            return 'Game Over'
         elif O==3:
-            print('''O wins.Game Over''')
-            break
+            print('''O wins.''')
+            return 'Game Over'
         X=0
         O=0
     #Row_Checker
-    # for count in org_table:
-    #     if count[]
+    row_X = 0
+    row_O = 0
+    for count in org_table:
+        # Row_One
+        if count[0]=='X':
+            row_X+=1
+        elif count[0]=='O':
+            row_O+=1
+        if row_X==3:
+            print('X wins')
+            return 'Game Over'
+        elif row_O==3:
+            print('O Wins')
+            return 'Game Over'
+    row_O=0
+    row_X=0
+        #Row_Two
+    for count in org_table:
+        if count[1]=='X':
+            row_X+=1
+        elif count[1]=='O':
+            row_O+=1
+        if row_X==3:
+            print('X Wins')
+            return 'Game Over'
+        elif row_O==3:
+            print('O Wins')
+            return 'Game Over'
+    row_O=0
+    row_X=0
+        #Row_Three
+    for count in org_table:
+        if count[4]=='X':
+            row_X+=1
+        elif count[4]=='O':
+            row_O+=1
+        if row_X==3:
+            print('X Wins')
+            return 'Game Over'
+        elif row_O==3:
+            print('O Wins')
+            return 'Game Over'
+    ##Diagonal_Checker##
+    diagonal_x_left = 0
+    diagonal_o_left = 0
+    diagonal_x_right=0
+    diagonal_o_right=0
+    #left to right
+    if org_table[0][0]=='X':
+        diagonal_x_left+=1
+    elif org_table[0][0]=='O':
+        diagonal_o_left+=1
+    if org_table[1][2]=='X':
+        diagonal_x_left+=1
+    elif org_table[1][2]=='O':
+        diagonal_o_left+=1
+    if org_table[2][4]=='X':
+        diagonal_x_left+=1
+    elif org_table[2][4]=='O':
+        diagonal_o_left+=1
+    if diagonal_x_left==3:
+        print('X Wins')
+        return 'Game Over'
+    if diagonal_o_left==3:
+        print('O wins')
+        return 'Game Over'
+    #right to left
+    if org_table[0][4]=='X':
+        diagonal_x_right+=1
+    elif org_table[0][4]=='O':
+        diagonal_o_right+=1
+    if org_table[1][2]=='X':
+        diagonal_x_right+=1
+    elif org_table[1][2]=='O':
+        diagonal_o_right+=1
+    if org_table[2][0]=='X':
+        diagonal_x_right+=1
+    elif org_table[2][0]=='O':
+        diagonal_o_right+=1
+    if diagonal_x_right==3:
+        print('X Wins')
+        return 'Game Over'
+    if diagonal_o_right==3:
+        print('O wins')
+        return 'Game Over'
+    return ''
