@@ -326,8 +326,7 @@ except ValueError:
                 game()
             else:
                 break
-    elif user_input != 'start':
-        raise ValueError
+
 
 
 
